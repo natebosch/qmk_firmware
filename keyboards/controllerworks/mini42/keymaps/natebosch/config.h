@@ -16,6 +16,8 @@
  */
 
 #pragma once
+#define PERMISSIVE_HOLD
+
 #ifdef RGB_MATRIX_ENABLE
 //#    define SPLIT_TRANSPORT_MIRROR
 #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
