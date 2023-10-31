@@ -17,6 +17,7 @@
 
 #pragma once
 #define PERMISSIVE_HOLD
+#define MASTER_RIGHT
 
 #ifdef RGB_MATRIX_ENABLE
 //#    define SPLIT_TRANSPORT_MIRROR
