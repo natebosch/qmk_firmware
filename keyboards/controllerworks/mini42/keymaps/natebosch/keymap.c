@@ -59,6 +59,34 @@ tap_dance_action_t tap_dance_actions[] = {
   [D_BRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
 };
 
+enum combos {
+  L_ARW,
+  L_SYM,
+  L_DEL,
+  L_FIG,
+  L_FUN,
+  L_NAV,
+  L_CTL,
+};
+
+const uint16_t PROGMEM l_arw_combo[] = {CTL_A, MO(l_ls1), COMBO_END};
+const uint16_t PROGMEM l_sym_combo[] = {GUI_S, MO(l_ls1), COMBO_END};
+const uint16_t PROGMEM l_del_combo[] = {ALT_D, MO(l_ls1), COMBO_END};
+const uint16_t PROGMEM l_fig_combo[] = {SFT_F, MO(l_ls1), COMBO_END};
+const uint16_t PROGMEM l_fun_combo[] = {SFT_F, ESC_LCTL, MO(l_ls1), COMBO_END};
+const uint16_t PROGMEM l_nav_combo[] = {CTL_SCLN, MO(l_rs1), COMBO_END};
+const uint16_t PROGMEM l_ctl_combo[] = {KC_QUOT, MO(l_rs1), COMBO_END};
+
+combo_t key_combos[] = {
+  [L_ARW] = COMBO(l_arw_combo, TT(l_arw)),
+  [L_SYM] = COMBO(l_sym_combo, TT(l_sym)),
+  [L_DEL] = COMBO(l_del_combo, TT(l_del)),
+  [L_FIG] = COMBO(l_fig_combo, TT(l_fig)),
+  [L_FUN] = COMBO(l_fun_combo, TT(l_fun)),
+  [L_NAV] = COMBO(l_nav_combo, TT(l_nav)),
+  [L_CTL] = COMBO(l_ctl_combo, TT(l_ctl)),
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // qwerty layout
@@ -68,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
       ESC_LCTL,    CTL_A,    GUI_S,    ALT_D,    SFT_F,     KC_G,                            KC_H,    SFT_J,    ALT_K,    GUI_L, CTL_SCLN,  KC_QUOT,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       KC_LSFT,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                            KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,   RSFT_T(KC_ENT),
+       KC_LSFT,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                            KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,RSFT_T(KC_ENT),
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                                KC_LGUI,MO(l_ls1),   KC_SPC,      KC_ENT,MO(l_rs1),    TO(0)
                                           //`-----------------------------'  `-----------------------------'
