@@ -67,6 +67,8 @@ enum combos {
   L_FUN,
   L_NAV,
   L_CTL,
+  JK_ESC,
+  FJ_CAPS,
 };
 
 const uint16_t PROGMEM l_arw_combo[] = {CTL_A, MO(l_ls1), COMBO_END};
@@ -76,6 +78,8 @@ const uint16_t PROGMEM l_fig_combo[] = {SFT_F, MO(l_ls1), COMBO_END};
 const uint16_t PROGMEM l_fun_combo[] = {SFT_F, ESC_LCTL, MO(l_ls1), COMBO_END};
 const uint16_t PROGMEM l_nav_combo[] = {CTL_SCLN, MO(l_rs1), COMBO_END};
 const uint16_t PROGMEM l_ctl_combo[] = {KC_QUOT, MO(l_rs1), COMBO_END};
+const uint16_t PROGMEM jk_esc_combo[] = {SFT_J, ALT_K, COMBO_END};
+const uint16_t PROGMEM fj_caps_combo[] = {SFT_F, SFT_J, COMBO_END};
 
 combo_t key_combos[] = {
   [L_ARW] = COMBO(l_arw_combo, TT(l_arw)),
@@ -85,8 +89,9 @@ combo_t key_combos[] = {
   [L_FUN] = COMBO(l_fun_combo, TT(l_fun)),
   [L_NAV] = COMBO(l_nav_combo, TT(l_nav)),
   [L_CTL] = COMBO(l_ctl_combo, TT(l_ctl)),
+  [JK_ESC] = COMBO(jk_esc_combo, KC_ESC),
+  [FJ_CAPS] = COMBO(fj_caps_combo, CW_TOGG),
 };
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // qwerty layout
