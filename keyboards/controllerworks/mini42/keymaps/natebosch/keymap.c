@@ -35,15 +35,18 @@
 
 #define l_qwt 0
 #define l_ls1 1
-#define l_rs1 2
-#define l_ls2 3
-#define l_arw 4
-#define l_sym 5
-#define l_del 6
-#define l_fig 7
-#define l_fun 8
+#define l_ls2 2
+#define l_arw 3
+#define l_sym 4
+#define l_del 5
+#define l_fig 6
+#define l_fun 7
+#define l_rs1 8
 #define l_nav 9
 #define l_ctl 10
+
+#define spc_ls1 LT(l_ls1, KC_SPC)
+#define ent_rs1 LT(l_rs1, KC_ENT)
 
 enum tap_dance_codes {
   D_PRN,
@@ -71,13 +74,13 @@ enum combos {
   FJ_CAPS,
 };
 
-const uint16_t PROGMEM l_arw_combo[] = {CTL_A, MO(l_ls1), COMBO_END};
-const uint16_t PROGMEM l_sym_combo[] = {GUI_S, MO(l_ls1), COMBO_END};
-const uint16_t PROGMEM l_del_combo[] = {ALT_D, MO(l_ls1), COMBO_END};
-const uint16_t PROGMEM l_fig_combo[] = {SFT_F, MO(l_ls1), COMBO_END};
-const uint16_t PROGMEM l_fun_combo[] = {SFT_F, ESC_LCTL, MO(l_ls1), COMBO_END};
-const uint16_t PROGMEM l_nav_combo[] = {CTL_SCLN, MO(l_rs1), COMBO_END};
-const uint16_t PROGMEM l_ctl_combo[] = {KC_QUOT, MO(l_rs1), COMBO_END};
+const uint16_t PROGMEM l_arw_combo[] = {CTL_A, spc_ls1, COMBO_END};
+const uint16_t PROGMEM l_sym_combo[] = {GUI_S, spc_ls1, COMBO_END};
+const uint16_t PROGMEM l_del_combo[] = {ALT_D, spc_ls1, COMBO_END};
+const uint16_t PROGMEM l_fig_combo[] = {SFT_F, spc_ls1, COMBO_END};
+const uint16_t PROGMEM l_fun_combo[] = {SFT_F, ESC_LCTL, spc_ls1, COMBO_END};
+const uint16_t PROGMEM l_nav_combo[] = {CTL_SCLN, ent_rs1, COMBO_END};
+const uint16_t PROGMEM l_ctl_combo[] = {KC_QUOT, ent_rs1, COMBO_END};
 const uint16_t PROGMEM jk_esc_combo[] = {SFT_J, ALT_K, COMBO_END};
 const uint16_t PROGMEM fj_caps_combo[] = {SFT_F, SFT_J, COMBO_END};
 
@@ -103,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        KC_LSFT,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                            KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,RSFT_T(KC_ENT),
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               KC_LGUI,MO(l_ls1),   KC_SPC,      KC_ENT,MO(l_rs1),    TO(0)
+                                               KC_LGUI,MO(l_ls1),  spc_ls1,     ent_rs1,MO(l_rs1),    TO(0)
                                           //`-----------------------------'  `-----------------------------'
 
   ),
@@ -117,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  _______,  XXXXXXX,     KC_BSPC,  XXXXXXX,  _______
+                                               XXXXXXX,  _______,  _______,     KC_BSPC,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
   [l_ls2] = LAYOUT_split_3x6_3(
@@ -128,20 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  _______,  XXXXXXX,     _______,  XXXXXXX,  _______
-                                          //`-----------------------------'  `-----------------------------'
-  ),
-
-  // Right board layer shortucts
-  [l_rs1] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_nav),TT(l_ctl),
-  //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  XXXXXXX,  KC_BSPC,     XXXXXXX,  _______,  _______
+                                               XXXXXXX,  _______,  _______,     _______,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -154,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         KC_WH_L,  KC_WH_U,  KC_WH_D,  KC_WH_R,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  _______,  XXXXXXX,     KC_BTN1,  KC_BTN2,  _______
+                                               XXXXXXX,  _______,  _______,     KC_BTN1,  KC_BTN2,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -167,7 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         KC_MINS,   KC_EQL,  KC_UNDS,  KC_PLUS,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  _______,  XXXXXXX,     KC_BSPC,  XXXXXXX,  _______
+                                               XXXXXXX,  _______,  _______,     KC_BSPC,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -180,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         KC_ASTR,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  _______,  XXXXXXX,     KC_BSPC,  XXXXXXX,  _______
+                                               XXXXXXX,  _______,  _______,     _______,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -193,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,  XXXXXXX,                         KC_MINS,     KC_1,     KC_2,     KC_3,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  _______,  XXXXXXX,     KC_BSPC,  XXXXXXX,  _______
+                                               XXXXXXX,  _______,  _______,     _______,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -206,7 +196,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,  XXXXXXX,                         XXXXXXX,    KC_F1,    KC_F2,    KC_F3,   KC_F10,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  _______,  XXXXXXX,     XXXXXXX,  XXXXXXX,  _______
+                                               XXXXXXX,  _______,  _______,     _______,  XXXXXXX,  _______
+                                          //`-----------------------------'  `-----------------------------'
+  ),
+
+  // Right board layer shortucts
+  [l_rs1] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_nav),TT(l_ctl),
+  //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
+                                               XXXXXXX,  XXXXXXX,  KC_BSPC,     _______,  _______,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -219,7 +222,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  XXXXXXX,  XXXXXXX,     XXXXXXX,  _______,  _______
+                                               XXXXXXX,  XXXXXXX,  _______,     _______,  _______,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -232,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  RGB_SPD,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  XXXXXXX,  XXXXXXX,     XXXXXXX,  _______,  _______
+                                               XXXXXXX,  XXXXXXX,  _______,     _______,  _______,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 };
