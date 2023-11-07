@@ -31,6 +31,8 @@
 #define ESC_LCTL LCTL_T(KC_ESC)
 #define CTL_TAB LCTL(KC_TAB)
 #define C_S_TAB LCTL(LSFT(KC_TAB))
+#define GUI_TAB LGUI(KC_TAB)
+#define G_S_TAB LGUI(LSFT(KC_TAB))
 #define SFT_ALT LSFT(KC_LALT)
 
 #define l_qwt 0
@@ -218,7 +220,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  C_S_TAB,  CTL_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  G_S_TAB,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
