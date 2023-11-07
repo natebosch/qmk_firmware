@@ -85,13 +85,13 @@ const uint16_t PROGMEM jk_esc_combo[] = {SFT_J, ALT_K, COMBO_END};
 const uint16_t PROGMEM fj_caps_combo[] = {SFT_F, SFT_J, COMBO_END};
 
 combo_t key_combos[] = {
-  [L_ARW] = COMBO(l_arw_combo, TT(l_arw)),
-  [L_SYM] = COMBO(l_sym_combo, TT(l_sym)),
-  [L_DEL] = COMBO(l_del_combo, TT(l_del)),
-  [L_FIG] = COMBO(l_fig_combo, TT(l_fig)),
-  [L_FUN] = COMBO(l_fun_combo, TT(l_fun)),
-  [L_NAV] = COMBO(l_nav_combo, TT(l_nav)),
-  [L_CTL] = COMBO(l_ctl_combo, TT(l_ctl)),
+  [L_ARW] = COMBO(l_arw_combo, MO(l_arw)),
+  [L_SYM] = COMBO(l_sym_combo, MO(l_sym)),
+  [L_DEL] = COMBO(l_del_combo, MO(l_del)),
+  [L_FIG] = COMBO(l_fig_combo, MO(l_fig)),
+  [L_FUN] = COMBO(l_fun_combo, MO(l_fun)),
+  [L_NAV] = COMBO(l_nav_combo, MO(l_nav)),
+  [L_CTL] = COMBO(l_ctl_combo, MO(l_ctl)),
   [JK_ESC] = COMBO(jk_esc_combo, KC_ESC),
   [FJ_CAPS] = COMBO(fj_caps_combo, CW_TOGG),
 };
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        KC_LSFT,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                            KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,RSFT_T(KC_ENT),
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               KC_LGUI,MO(l_ls1),  spc_ls1,     ent_rs1,MO(l_rs1),    TO(0)
+                                               XXXXXXX,  XXXXXXX,  spc_ls1,     ent_rs1,  XXXXXXX,    TO(0)
                                           //`-----------------------------'  `-----------------------------'
 
   ),
@@ -209,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  XXXXXXX,  KC_BSPC,     _______,  _______,  _______
+                                               XXXXXXX,  XXXXXXX,  KC_BSPC,     _______,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -222,7 +222,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  XXXXXXX,  _______,     _______,  _______,  _______
+                                               XXXXXXX,  XXXXXXX,  _______,     _______,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -235,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  RGB_SPD,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  XXXXXXX,  _______,     _______,  _______,  _______
+                                               XXXXXXX,  XXXXXXX,  _______,     _______,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 };
