@@ -218,11 +218,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Navigation layer
   [l_nav] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,MEH(KC_H),  C_S_TAB,  CTL_TAB,MEH(KC_L),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  G_S_TAB,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  G_S_TAB,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,  XXXXXXX,
+       XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,MEH(KC_T),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                                XXXXXXX,  XXXXXXX,  _______,     _______,  XXXXXXX,  _______
                                           //`-----------------------------'  `-----------------------------'
