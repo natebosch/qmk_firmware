@@ -31,8 +31,6 @@
 #define ESC_LCTL LCTL_T(KC_ESC)
 #define CTL_TAB LCTL(KC_TAB)
 #define C_S_TAB LCTL(LSFT(KC_TAB))
-#define GUI_TAB LGUI(KC_TAB)
-#define G_S_TAB LGUI(LSFT(KC_TAB))
 #define SFT_ALT LSFT(KC_LALT)
 
 #define l_qwt 0
@@ -98,6 +96,44 @@ combo_t key_combos[] = {
   [FJ_CAPS] = COMBO(fj_caps_combo, CW_TOGG),
 };
 
+bool is_gui_tab_active = false;
+uint16_t gui_tab_timer = 0;
+
+enum custom_keycodes {
+  GUI_TAB = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case GUI_TAB:
+      if (record->event.pressed) {
+        if (!is_gui_tab_active) {
+          is_gui_tab_active = true;
+          register_code(KC_LGUI);
+        }
+        gui_tab_timer = timer_read();
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      break;
+    default:
+      if (is_gui_tab_active && record->event.pressed) {
+        is_gui_tab_active = false;
+        unregister_code(KC_LGUI);
+      }
+  }
+  return true;
+}
+
+void matrix_scan_user(void) {
+  if (is_gui_tab_active) {
+    if (timer_elapsed(gui_tab_timer) > 1000) {
+      unregister_code(KC_LGUI);
+      is_gui_tab_active = false;
+    }
+  }
+}
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // qwerty layout
   [l_qwt] = LAYOUT_split_3x6_3(
@@ -218,9 +254,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Navigation layer
   [l_nav] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  G_S_TAB,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,  XXXXXXX,
+       XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  _______,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,MEH(KC_T),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
