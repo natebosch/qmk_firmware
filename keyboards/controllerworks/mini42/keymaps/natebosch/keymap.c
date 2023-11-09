@@ -285,6 +285,22 @@ void render_layer_status(void) {
     default:
       oled_write_ln_P(PSTR("unkwn"), false);
   }
+  uint8_t modifiers = get_mods();
+  char modifier_str[5];
+  memset(modifier_str, '\0', sizeof(modifier_str));
+  if (modifiers & MOD_MASK_CTRL) {
+    strcat(modifier_str, "c");
+  }
+  if (modifiers & MOD_MASK_ALT) {
+    strcat(modifier_str, "a");
+  }
+  if (modifiers & MOD_MASK_GUI) {
+    strcat(modifier_str, "g");
+  }
+  if (modifiers & MOD_MASK_SHIFT) {
+    strcat(modifier_str, "s");
+  }
+  oled_write_ln(modifier_str, false);
 }
 
 bool oled_task_user(void) {
