@@ -19,6 +19,7 @@
 #define PERMISSIVE_HOLD
 #define MASTER_RIGHT
 #define TAPPING_TOGGLE 1
+#define TAP_CODE_DELAY 2
 
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_KEYPRESSES // reacts to keypresses
