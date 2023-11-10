@@ -284,9 +284,10 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 void render_layer_status(void) {
+  bool is_control_layer = false;
   switch (get_highest_layer(layer_state)) {
     case l_qwt:
-      oled_write_ln_P(PSTR("qwert"), false);
+      oled_write_ln_P(PSTR("     "), false);
       break;
     case l_ls1:
       oled_write_ln_P(PSTR("<- L "), false);
@@ -307,7 +308,7 @@ void render_layer_status(void) {
       oled_write_ln_P(PSTR("delim"), false);
       break;
     case l_fig:
-      oled_write_ln_P(PSTR("num  "), false);
+      oled_write_ln_P(PSTR(" num "), false);
       break;
     case l_fun:
       oled_write_ln_P(PSTR("funct"), false);
@@ -317,19 +318,42 @@ void render_layer_status(void) {
       break;
     case l_ctl:
       oled_write_ln_P(PSTR("cntrl"), false);
+      is_control_layer = true;
       break;
     default:
       oled_write_ln_P(PSTR("unkwn"), false);
   }
   uint8_t modifiers = get_mods();
-  char modifier_str[5] = {
-    (modifiers & MOD_MASK_CTRL) ? 'c' : ' ',
-    (modifiers & MOD_MASK_GUI) ? 'g' : ' ',
-    (modifiers & MOD_MASK_ALT) ? 'a' : ' ',
-    (modifiers & MOD_MASK_SHIFT) ? 's' : ' ',
-    '\0'
-  };
-  oled_write_ln(modifier_str, false);
+  if (is_keyboard_master()) {
+    char modifier_str[5] = {
+      (modifiers & MOD_MASK_SHIFT) ? 's' : ' ',
+      (modifiers & MOD_MASK_ALT) ? 'a' : ' ',
+      (modifiers & MOD_MASK_GUI) ? 'g' : ' ',
+      (modifiers & MOD_MASK_CTRL) ? 'c' : ' ',
+      '\0'
+    };
+    oled_write_ln(modifier_str, false);
+    if (is_control_layer) {
+      const char *tapping_term_str = get_u16_str(g_tapping_term, ' ');
+      // Skip padding spaces
+      while (*tapping_term_str == ' ') {
+        tapping_term_str++;
+      }
+      oled_write_ln(tapping_term_str, false);
+    } else {
+      oled_write_ln_P(PSTR("     "), false);
+    }
+  } else {
+    char modifier_str[5] = {
+      (modifiers & MOD_MASK_CTRL) ? 'c' : ' ',
+      (modifiers & MOD_MASK_GUI) ? 'g' : ' ',
+      (modifiers & MOD_MASK_ALT) ? 'a' : ' ',
+      (modifiers & MOD_MASK_SHIFT) ? 's' : ' ',
+      '\0'
+    };
+    oled_write_ln(modifier_str, false);
+    oled_write_ln_P(PSTR("     "), false);
+  }
 }
 
 bool oled_task_user(void) {
