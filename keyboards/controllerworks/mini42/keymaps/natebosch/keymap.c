@@ -322,20 +322,13 @@ void render_layer_status(void) {
       oled_write_ln_P(PSTR("unkwn"), false);
   }
   uint8_t modifiers = get_mods();
-  char modifier_str[5];
-  memset(modifier_str, '\0', sizeof(modifier_str));
-  if (modifiers & MOD_MASK_CTRL) {
-    strcat(modifier_str, "c");
-  }
-  if (modifiers & MOD_MASK_ALT) {
-    strcat(modifier_str, "a");
-  }
-  if (modifiers & MOD_MASK_GUI) {
-    strcat(modifier_str, "g");
-  }
-  if (modifiers & MOD_MASK_SHIFT) {
-    strcat(modifier_str, "s");
-  }
+  char modifier_str[5] = {
+    (modifiers & MOD_MASK_CTRL) ? 'c' : ' ',
+    (modifiers & MOD_MASK_GUI) ? 'g' : ' ',
+    (modifiers & MOD_MASK_ALT) ? 'a' : ' ',
+    (modifiers & MOD_MASK_SHIFT) ? 's' : ' ',
+    '\0'
+  };
   oled_write_ln(modifier_str, false);
 }
 
