@@ -395,9 +395,9 @@ void render_layer_status(void) {
       oled_write_ln_P(PSTR("     "), false);
     }
     char feature_str[5] = {
+      (is_caps_word_active) ? 'W' : ' ',
       (is_gui_tab_active) ? 'A' : ' ',
       (is_mouse_jiggle_active) ? 'M' : ' ',
-      (is_caps_word_active) ? 'W' : ' ',
       '\0'
     };
     oled_write_ln(feature_str, false);
