@@ -292,7 +292,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Board control layer
   [l_ctl] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       QK_BOOT,  XXXXXXX,  DT_DOWN,    DT_UP,  DT_PRNT,  XXXXXXX,                         QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       QK_BOOT,  XXXXXXX,  DT_DOWN,    DT_UP,  XXXXXXX,  XXXXXXX,                         QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  RGB_SPI,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_ctl),
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
