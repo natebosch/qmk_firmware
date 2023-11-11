@@ -105,6 +105,7 @@ enum custom_keycodes {
   A_DARRW,
   A_SARRW,
   A_VIMEX,
+  A_VIMWQ,
   K_JIGGL,
 };
 
@@ -134,6 +135,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case A_VIMEX:
       if (record->event.pressed) SEND_STRING("\e:qa\n");
+      break;
+    case A_VIMWQ:
+      if (record->event.pressed) SEND_STRING("\e:wq\n");
       break;
     case K_JIGGL:
       if (record->event.pressed) {
@@ -296,7 +300,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Navigation layer
   [l_nav] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  A_VIMEX,  XXXXXXX,  XXXXXXX,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  A_VIMEX,  A_VIMWQ,  XXXXXXX,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,TT(l_nav),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
