@@ -190,7 +190,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  _______,  KC_LCTL,  KC_LGUI,  KC_LALT,  KC_LSFT,                         KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,   KC_TAB,  XXXXXXX,
+       XXXXXXX,TT(l_arw),  KC_LCTL,  KC_LGUI,  KC_LALT,  KC_LSFT,                         KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,   KC_TAB,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         KC_WH_L,  KC_WH_U,  KC_WH_D,  KC_WH_R,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -203,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,                         KC_TILD,  KC_HASH,  KC_ASTR,  KC_PERC,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  KC_LCTL,  _______,  KC_LGUI,  KC_LALT,  KC_LSFT,                         KC_CIRC,    KC_AT,  KC_EXLM,   KC_AMPR,  KC_DLR,  XXXXXXX,
+       XXXXXXX,  KC_LCTL,TT(l_sym),  KC_LGUI,  KC_LALT,  KC_LSFT,                         KC_CIRC,    KC_AT,  KC_EXLM,   KC_AMPR,  KC_DLR,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         KC_MINS,   KC_EQL,  KC_UNDS,  KC_PLUS,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -216,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,                         KC_PERC,  KC_QUOT,  KC_DQUO,   KC_GRV,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  KC_LCTL,  KC_LGUI,  _______,  KC_LALT,  KC_LSFT,                       TD(D_ABK),TD(D_PRN),TD(D_CBR),TD(D_BRC),  KC_BSLS,  XXXXXXX,
+       XXXXXXX,  KC_LCTL,  KC_LGUI,TT(l_del),  KC_LALT,  KC_LSFT,                       TD(D_ABK),TD(D_PRN),TD(D_CBR),TD(D_BRC),  KC_BSLS,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         KC_ASTR,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -229,7 +229,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,  XXXXXXX,                          KC_EQL,     KC_7,     KC_8,     KC_9,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-     MO(l_fun),  KC_LCTL,  KC_LGUI,  KC_LALT,  _______,  XXXXXXX,                            KC_0,     KC_4,     KC_5,     KC_6,  XXXXXXX,  XXXXXXX,
+     MO(l_fun),  KC_LCTL,  KC_LGUI,  KC_LALT,TT(l_fig),  XXXXXXX,                            KC_0,     KC_4,     KC_5,     KC_6,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,  XXXXXXX,                         KC_MINS,     KC_1,     KC_2,     KC_3,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -242,7 +242,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,  XXXXXXX,                         XXXXXXX,    KC_F7,    KC_F8,    KC_F9,   KC_F12,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       _______,  KC_LCTL,  KC_LGUI,  KC_LALT,  _______,  XXXXXXX,                         XXXXXXX,    KC_F4,    KC_F5,    KC_F6,   KC_F11,  XXXXXXX,
+       _______,  KC_LCTL,  KC_LGUI,  KC_LALT,TT(l_fun),  XXXXXXX,                         XXXXXXX,    KC_F4,    KC_F5,    KC_F6,   KC_F11,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,  XXXXXXX,                         XXXXXXX,    KC_F1,    KC_F2,    KC_F3,   KC_F10,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -268,7 +268,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  A_SARRW,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  A_DARRW,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  A_DARRW,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_abr),  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -281,7 +281,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  _______,  XXXXXXX,
+       XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,TT(l_nav),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,MEH(KC_T),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -294,7 +294,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        QK_BOOT,  XXXXXXX,  DT_DOWN,    DT_UP,  DT_PRNT,  XXXXXXX,                         QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  RGB_SPI,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
+       RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  RGB_SPI,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_ctl),
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  RGB_SPD,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
