@@ -227,11 +227,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Numpad (figures)
   [l_fig] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,  XXXXXXX,                          KC_EQL,     KC_7,     KC_8,     KC_9,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,  XXXXXXX,                         KC_PLUS,     KC_7,     KC_8,     KC_9,   KC_EQL,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-     MO(l_fun),  KC_LCTL,  KC_LGUI,  KC_LALT,TT(l_fig),  XXXXXXX,                            KC_0,     KC_4,     KC_5,     KC_6,  XXXXXXX,  XXXXXXX,
+     MO(l_fun),  KC_LCTL,  KC_LGUI,  KC_LALT,TT(l_fig),  XXXXXXX,                         KC_ASTR,     KC_4,     KC_5,     KC_6,     KC_0, KC_SLASH,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,  XXXXXXX,                         KC_MINS,     KC_1,     KC_2,     KC_3,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,  XXXXXXX,                         KC_MINS,     KC_1,     KC_2,     KC_3,   KC_DOT,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                                XXXXXXX,  _______,  _______,     _______,  _______,  _______
                                           //`-----------------------------'  `-----------------------------'
