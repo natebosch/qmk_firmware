@@ -107,6 +107,7 @@ enum custom_keycodes {
   GUI_TAB = SAFE_RANGE,
   A_DARRW,
   A_SARRW,
+  A_VIMEX,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -128,6 +129,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case A_SARRW:
       if (record->event.pressed) SEND_STRING("->");
+      break;
+    case A_VIMEX:
+      if (record->event.pressed) SEND_STRING("\e:qa\n");
       break;
     default:
       if (is_gui_tab_active && record->event.pressed) {
@@ -279,7 +283,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Navigation layer
   [l_nav] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  A_VIMEX,  XXXXXXX,  XXXXXXX,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,TT(l_nav),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
