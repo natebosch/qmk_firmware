@@ -111,6 +111,7 @@ enum custom_keycodes {
 
 bool is_gui_tab_active = false;
 bool is_mouse_jiggle_active = false;
+bool is_caps_word_active = false;
 uint16_t gui_tab_timer = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -161,12 +162,13 @@ void matrix_scan_user(void) {
   if (is_mouse_jiggle_active) {
     tap_code(KC_MS_UP);
     tap_code(KC_MS_DOWN);
-    tap_code(KC_MS_LEFT);
-    tap_code(KC_MS_RIGHT);
-    tap_code(KC_MS_WH_UP);
-    tap_code(KC_MS_WH_DOWN);
   }
 }
+
+void caps_word_set_user(bool active) {
+  is_caps_word_active = active;
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // qwerty layout
   [l_qwt] = LAYOUT_split_3x6_3(
@@ -392,9 +394,10 @@ void render_layer_status(void) {
     } else {
       oled_write_ln_P(PSTR("     "), false);
     }
-    char features_str[5] = {
+    char feature_str[5] = {
       (is_gui_tab_active) ? 'A' : ' ',
       (is_mouse_jiggle_active) ? 'M' : ' ',
+      (is_caps_word_active) ? 'W' : ' ',
       '\0'
     };
     oled_write_ln(feature_str, false);
