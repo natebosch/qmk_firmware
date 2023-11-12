@@ -42,9 +42,10 @@
 #define l_fig 6
 #define l_fun 7
 #define l_rs1 8
-#define l_abr 9
-#define l_nav 10
-#define l_ctl 11
+#define l_med 9
+#define l_abr 10
+#define l_nav 11
+#define l_ctl 12
 
 #define spc_ls1 LT(l_ls1, KC_SPC)
 #define ent_rs1 LT(l_rs1, KC_ENT)
@@ -69,6 +70,7 @@ enum combos {
   L_DEL,
   L_FIG,
   L_FUN,
+  L_MED,
   L_ABR,
   L_NAV,
   L_CTL,
@@ -81,6 +83,7 @@ const uint16_t PROGMEM l_sym_combo[] = {GUI_S, spc_ls1, COMBO_END};
 const uint16_t PROGMEM l_del_combo[] = {ALT_D, spc_ls1, COMBO_END};
 const uint16_t PROGMEM l_fig_combo[] = {SFT_F, spc_ls1, COMBO_END};
 const uint16_t PROGMEM l_fun_combo[] = {SFT_F, ESC_LCTL, spc_ls1, COMBO_END};
+const uint16_t PROGMEM l_med_combo[] = {ALT_K, ent_rs1, COMBO_END};
 const uint16_t PROGMEM l_abr_combo[] = {GUI_L, ent_rs1, COMBO_END};
 const uint16_t PROGMEM l_nav_combo[] = {CTL_SCLN, ent_rs1, COMBO_END};
 const uint16_t PROGMEM l_ctl_combo[] = {KC_QUOT, ent_rs1, COMBO_END};
@@ -93,6 +96,7 @@ combo_t key_combos[] = {
   [L_DEL] = COMBO(l_del_combo, MO(l_del)),
   [L_FIG] = COMBO(l_fig_combo, MO(l_fig)),
   [L_FUN] = COMBO(l_fun_combo, MO(l_fun)),
+  [L_MED] = COMBO(l_med_combo, MO(l_med)),
   [L_ABR] = COMBO(l_abr_combo, MO(l_abr)),
   [L_NAV] = COMBO(l_nav_combo, MO(l_nav)),
   [L_CTL] = COMBO(l_ctl_combo, MO(l_ctl)),
@@ -278,11 +282,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_abr),TT(l_nav),TT(l_ctl),
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,TT(l_med),TT(l_abr),TT(l_nav),TT(l_ctl),
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                                XXXXXXX,  _______,  KC_BSPC,     _______,  _______,  _______
+                                          //`-----------------------------'  `-----------------------------'
+  ),
+
+  // Media controls
+  [l_med] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
+       XXXXXXX,  XXXXXXX,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_BRIU,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
+       XXXXXXX,  XXXXXXX,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_BRID,                         XXXXXXX,  XXXXXXX,TT(l_med),  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
+       XXXXXXX,  XXXXXXX,  KC_MRWD,  KC_MSTP,  KC_MFFD,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
+                                               XXXXXXX,  _______,  _______,     _______,  _______,  _______
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -360,6 +377,9 @@ void render_layer_status(void) {
       break;
     case l_fun:
       oled_write_ln_P(PSTR("funct"), false);
+      break;
+    case l_med:
+      oled_write_ln_P(PSTR("media"), false);
       break;
     case l_abr:
       oled_write_ln_P(PSTR("abbrv"), false);
