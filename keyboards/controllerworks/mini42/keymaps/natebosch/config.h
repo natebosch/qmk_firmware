@@ -20,7 +20,7 @@
 #define MASTER_RIGHT
 #define TAPPING_TOGGLE 1
 #define TAP_CODE_DELAY 3
-#define TAPPING_TERM 150
+#define TAPPING_TERM 160
 
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_KEYPRESSES // reacts to keypresses
