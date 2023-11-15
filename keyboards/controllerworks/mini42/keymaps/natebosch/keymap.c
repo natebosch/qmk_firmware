@@ -32,6 +32,7 @@
 #define CTL_TAB LCTL(KC_TAB)
 #define C_S_TAB LCTL(LSFT(KC_TAB))
 #define SFT_ALT LSFT(KC_LALT)
+#define SFT_INS LSFT(KC_INS)
 
 #define VIM_ESC SS_LCTL("\\n")
 
@@ -333,7 +334,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,TT(l_nav),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  A_TMXCP,  XXXXXXX,MEH(KC_T),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  A_TMXCP,  SFT_INS,MEH(KC_T),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                                XXXXXXX,  _______,  _______,     _______,  _______,  _______
                                           //`-----------------------------'  `-----------------------------'
