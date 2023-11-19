@@ -17,10 +17,13 @@
 
 #pragma once
 #define PERMISSIVE_HOLD
-#define MASTER_RIGHT
 #define TAPPING_TOGGLE 1
 #define TAP_CODE_DELAY 5
 #define TAPPING_TERM 160
+
+#define SPLIT_ACTIVITY_ENABLE
+#define SPLIT_USB_DETECT
+#define EE_HANDS
 
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_KEYPRESSES // reacts to keypresses
