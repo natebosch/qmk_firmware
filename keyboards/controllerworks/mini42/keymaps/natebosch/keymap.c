@@ -33,6 +33,8 @@
 #define C_S_TAB LCTL(LSFT(KC_TAB))
 #define SFT_ALT LSFT(KC_LALT)
 #define SFT_INS LSFT(KC_INS)
+#define C_S_PUP LCTL(LSFT(KC_PAGE_UP))
+#define C_S_PDN LCTL(LSFT(KC_PAGE_DOWN))
 
 #define VIM_ESC SS_LCTL("\\n")
 
@@ -330,7 +332,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Navigation layer
   [l_nav] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  C_S_PUP,  C_S_PDN,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,TT(l_nav),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
