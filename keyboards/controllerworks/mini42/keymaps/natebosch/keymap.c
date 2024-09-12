@@ -120,6 +120,10 @@ enum custom_keycodes {
   A_VIMTE,
   A_VIMCW,
   A_VIMNT,
+  A_VIMGD,
+  A_VIMWD,
+  A_VIMND,
+  A_VIMPD,
   A_VIMPT,
   K_JIGGL,
 };
@@ -150,7 +154,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) SEND_STRING(VIM_ESC ":OpenMainTerm\n");
       break;
     case A_VIMCW:
-      if (record->event.pressed) SEND_STRING(SS_LCTL("w") "c");
+      if (record->event.pressed) SEND_STRING(VIM_ESC SS_LCTL("w") "c");
+      break;
+    case A_VIMGD:
+      if (record->event.pressed) SEND_STRING(SS_LCTL("]"));
+      break;
+    case A_VIMWD:
+      if (record->event.pressed) SEND_STRING(SS_LCTL("w") "]");
+      break;
+    case A_VIMND:
+      if (record->event.pressed) SEND_STRING("]d");
+      break;
+    case A_VIMPD:
+      if (record->event.pressed) SEND_STRING("[d");
       break;
     case A_VIMNT:
       if (record->event.pressed) SEND_STRING(VIM_ESC ":tabnext\n");
@@ -296,11 +312,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Vim macros
   [l_vim] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  A_VIMEX,  A_VIMWQ,  XXXXXXX,  XXXXXXX,  A_VIMTE,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  A_VIMEX,  A_VIMWQ,  A_VIMPD,  A_VIMND,  A_VIMTE,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  A_VIMNM,  A_VIMWR,  A_VIMPT,  A_VIMNT,  XXXXXXX,                         XXXXXXX,TT(l_vim),  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  A_VIMNM,  A_VIMWR,  A_VIMPT,  A_VIMNT,  A_VIMGD,                         XXXXXXX,TT(l_vim),  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  A_VIMCW,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  A_VIMCW,  XXXXXXX,  A_VIMWD,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                                XXXXXXX,  _______,  _______,     _______,  _______,  _______
                                           //`-----------------------------'  `-----------------------------'
