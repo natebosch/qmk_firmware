@@ -78,6 +78,7 @@ enum combos {
   L_MED,
   L_NAV,
   L_CTL,
+  L_CTR,
   JK_ESC,
   FJ_CAPS,
 };
@@ -90,7 +91,8 @@ const uint16_t PROGMEM l_fun_combo[] = {KC_R, spc_ls1, COMBO_END};
 const uint16_t PROGMEM l_vim_combo[] = {SFT_J, ent_rs1, COMBO_END};
 const uint16_t PROGMEM l_med_combo[] = {ALT_K, ent_rs1, COMBO_END};
 const uint16_t PROGMEM l_nav_combo[] = {CTL_SCLN, ent_rs1, COMBO_END};
-const uint16_t PROGMEM l_ctl_combo[] = {KC_QUOT, ent_rs1, COMBO_END};
+const uint16_t PROGMEM l_ctl_combo[] = {ESC_LCTL, spc_ls1, COMBO_END};
+const uint16_t PROGMEM l_ctr_combo[] = {KC_QUOT, ent_rs1, COMBO_END};
 const uint16_t PROGMEM jk_esc_combo[] = {SFT_J, ALT_K, COMBO_END};
 const uint16_t PROGMEM fj_caps_combo[] = {SFT_F, SFT_J, COMBO_END};
 
@@ -104,6 +106,7 @@ combo_t key_combos[] = {
   [L_MED] = COMBO(l_med_combo, MO(l_med)),
   [L_NAV] = COMBO(l_nav_combo, MO(l_nav)),
   [L_CTL] = COMBO(l_ctl_combo, MO(l_ctl)),
+  [L_CTR] = COMBO(l_ctr_combo, MO(l_ctl)),
   [JK_ESC] = COMBO(jk_esc_combo, KC_ESC),
   [FJ_CAPS] = COMBO(fj_caps_combo, CW_TOGG),
 };
