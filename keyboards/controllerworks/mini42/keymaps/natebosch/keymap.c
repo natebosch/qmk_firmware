@@ -112,8 +112,7 @@ combo_t key_combos[] = {
 };
 
 enum custom_keycodes {
-  GUI_TAB = SAFE_RANGE,
-  A_TMXCP,
+  A_TMXCP = SAFE_RANGE,
   A_VIMNM,
   A_VIMEX,
   A_VIMWQ,
@@ -132,18 +131,6 @@ uint16_t gui_tab_timer = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case GUI_TAB:
-      if (record->event.pressed) {
-        if (!is_gui_tab_active) {
-          is_gui_tab_active = true;
-          register_code(KC_LGUI);
-        }
-        gui_tab_timer = timer_read();
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      break;
     case A_TMXCP:
       if (record->event.pressed) SEND_STRING(SS_LCTL(" ") "[");
       break;
@@ -210,7 +197,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        KC_LSFT,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                            KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,RSFT_T(KC_ENT),
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,   KC_DEL,  spc_ls1,     ent_rs1,  KC_BSPC,    TO(0)
+                                                KC_TAB,   KC_DEL,  spc_ls1,     ent_rs1,  KC_BSPC,   KC_TAB
                                           //`-----------------------------'  `-----------------------------'
 
   ),
@@ -224,7 +211,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
-                                               XXXXXXX,  _______,  _______,     _______,  _______,  _______
+                                                 TO(0),  _______,  _______,     _______,  _______,    TO(0)
                                           //`-----------------------------'  `-----------------------------'
   ),
 
@@ -335,7 +322,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Navigation layer
   [l_nav] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  C_S_PUP,  C_S_PDN,  GUI_TAB,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  C_S_PUP,  C_S_PDN,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,MEH(KC_H),MEH(KC_L),  C_S_TAB,  CTL_TAB,MEH(KC_F),                         KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,TT(l_nav),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
