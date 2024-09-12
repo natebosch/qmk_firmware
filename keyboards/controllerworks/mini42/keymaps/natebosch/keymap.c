@@ -35,6 +35,8 @@
 #define SFT_INS LSFT(KC_INS)
 #define C_S_PUP LCTL(LSFT(KC_PAGE_UP))
 #define C_S_PDN LCTL(LSFT(KC_PAGE_DOWN))
+#define C_SCLN  LCTL(KC_SCLN)
+#define C_QUOTE LCTL(KC_QUOT)
 
 #define VIM_ESC SS_LCTL("\\n")
 
@@ -59,6 +61,7 @@ enum tap_dance_codes {
   D_ABK,
   D_CBR,
   D_BRC,
+  D_MTH,
 };
 
 tap_dance_action_t tap_dance_actions[] = {
@@ -66,6 +69,7 @@ tap_dance_action_t tap_dance_actions[] = {
   [D_ABK] = ACTION_TAP_DANCE_DOUBLE(KC_LABK, KC_RABK),
   [D_CBR] = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
   [D_BRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
+  [D_MTH] = ACTION_TAP_DANCE_DOUBLE(KC_ASTR, KC_SLASH),
 };
 
 enum combos {
@@ -91,8 +95,8 @@ const uint16_t PROGMEM l_fun_combo[] = {KC_R, spc_ls1, COMBO_END};
 const uint16_t PROGMEM l_vim_combo[] = {SFT_J, ent_rs1, COMBO_END};
 const uint16_t PROGMEM l_med_combo[] = {ALT_K, ent_rs1, COMBO_END};
 const uint16_t PROGMEM l_nav_combo[] = {CTL_SCLN, ent_rs1, COMBO_END};
-const uint16_t PROGMEM l_ctl_combo[] = {ESC_LCTL, spc_ls1, COMBO_END};
-const uint16_t PROGMEM l_ctr_combo[] = {KC_QUOT, ent_rs1, COMBO_END};
+const uint16_t PROGMEM l_ctl_combo[] = {KC_T, spc_ls1, COMBO_END};
+const uint16_t PROGMEM l_ctr_combo[] = {KC_Y, ent_rs1, COMBO_END};
 const uint16_t PROGMEM jk_esc_combo[] = {SFT_J, ALT_K, COMBO_END};
 const uint16_t PROGMEM fj_caps_combo[] = {SFT_F, SFT_J, COMBO_END};
 
@@ -218,12 +222,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   ),
 
-  // Left board layer shortucts
+  // Left board layer shortuts
   [l_ls1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_fun),  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_fun),TT(l_ctl),                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-     TT(l_ctl),TT(l_arw),TT(l_sym),TT(l_del),TT(l_fig),  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,TT(l_arw),TT(l_sym),TT(l_del),TT(l_fig),  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,   C_SCLN,  C_QUOTE,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -275,9 +279,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,  XXXXXXX,                         KC_PLUS,     KC_7,     KC_8,     KC_9,   KC_EQL,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  KC_LCTL,  KC_LGUI,  KC_LALT,TT(l_fig),  KC_LSFT,                         KC_ASTR,     KC_4,     KC_5,     KC_6,     KC_0, KC_SLASH,
+       XXXXXXX,  KC_LCTL,  KC_LGUI,  KC_LALT,TT(l_fig),  KC_LSFT,                         KC_MINS,     KC_4,     KC_5,     KC_6,     KC_0,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,  XXXXXXX,                         KC_MINS,     KC_1,     KC_2,     KC_3,   KC_DOT,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX,  XXXXXXX,                          KC_DOT,     KC_1,     KC_2,     KC_3,TD(D_MTH),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                              TO(l_qwt),  _______,  _______,     _______,  _______,TO(l_qwt)
                                           //`-----------------------------'  `-----------------------------'
@@ -296,12 +300,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           //`-----------------------------'  `-----------------------------'
   ),
 
-  // Right board layer shortucts
+  // Right board layer shortuts
   [l_rs1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                       TT(l_ctl),  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,TT(l_vim),TT(l_med),  XXXXXXX,TT(l_nav),TT(l_ctl),
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,TT(l_vim),TT(l_med),  XXXXXXX,TT(l_nav),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -351,11 +355,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Board control layer
   [l_ctl] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  XXXXXXX,  DT_DOWN,    DT_UP,  RGB_TOG,  QK_BOOT,                         QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  XXXXXXX,  DT_DOWN,    DT_UP,  RGB_TOG,TT(l_ctl),                       TT(l_ctl),  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-     TT(l_ctl),  RGB_HUI,  RGB_SAI,  RGB_VAI,  RGB_SPI,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,TT(l_ctl),
+       XXXXXXX,  RGB_HUI,  RGB_SAI,  RGB_VAI,  RGB_SPI,  QK_BOOT,                         QK_BOOT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  RGB_SPD,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  RGB_HUD,  RGB_SAD,  RGB_VAD,  RGB_SPD,  RGB_MOD,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                              TO(l_qwt),  _______,  _______,     _______,  _______,TO(l_qwt)
                                           //`-----------------------------'  `-----------------------------'
