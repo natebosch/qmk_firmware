@@ -28,6 +28,12 @@
 #define GUI_L RGUI_T(KC_L)
 #define CTL_SCLN LCTL_T(KC_SCLN)
 
+// One shod mods (toggles)
+#define TG_LSFT OSM(MOD_LSFT)
+#define TG_LALT OSM(MOD_LALT)
+#define TG_LGUI OSM(MOD_LGUI)
+#define TG_LCTL OSM(MOD_LCTL)
+
 #define ESC_LCTL LCTL_T(KC_ESC)
 #define CTL_TAB LCTL(KC_TAB)
 #define C_S_TAB LCTL(LSFT(KC_TAB))
@@ -295,7 +301,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                       TT(l_ctl),  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,TT(l_vim),TT(l_med),  XXXXXXX,TT(l_nav),  XXXXXXX,
+       XXXXXXX,  TG_LCTL,  TG_LGUI,  TG_LALT,  TG_LSFT,  XXXXXXX,                         XXXXXXX,TT(l_vim),TT(l_med),  XXXXXXX,TT(l_nav),  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -405,15 +411,24 @@ void render_layer_status(void) {
       oled_write_ln_P(PSTR("unkwn"), false);
   }
   uint8_t modifiers = get_mods();
+  uint8_t oneshot_modifiers = get_oneshot_mods();
   if (is_keyboard_master()) {
     char modifier_str[5] = {
-      (modifiers & MOD_MASK_SHIFT) ? 's' : ' ',
-      (modifiers & MOD_MASK_ALT) ? 'a' : ' ',
-      (modifiers & MOD_MASK_GUI) ? 'g' : ' ',
-      (modifiers & MOD_MASK_CTRL) ? 'c' : ' ',
+      (modifiers & MOD_MASK_SHIFT) ? 'S' : ' ',
+      (modifiers & MOD_MASK_ALT) ? 'A' : ' ',
+      (modifiers & MOD_MASK_GUI) ? 'G' : ' ',
+      (modifiers & MOD_MASK_CTRL) ? 'C' : ' ',
       '\0'
     };
     oled_write_ln(modifier_str, false);
+    char oneshot_modifier_str[5] = {
+      (oneshot_modifiers & MOD_MASK_SHIFT) ? 's' : ' ',
+      (oneshot_modifiers & MOD_MASK_ALT) ? 'a' : ' ',
+      (oneshot_modifiers & MOD_MASK_GUI) ? 'g' : ' ',
+      (oneshot_modifiers & MOD_MASK_CTRL) ? 'c' : ' ',
+      '\0'
+    };
+    oled_write_ln(oneshot_modifier_str, false);
     if (is_control_layer) {
       const char *tapping_term_str = get_u16_str(g_tapping_term, ' ');
       // Skip padding spaces
@@ -432,13 +447,21 @@ void render_layer_status(void) {
     oled_write_ln(feature_str, false);
   } else {
     char modifier_str[5] = {
-      (modifiers & MOD_MASK_CTRL) ? 'c' : ' ',
-      (modifiers & MOD_MASK_GUI) ? 'g' : ' ',
-      (modifiers & MOD_MASK_ALT) ? 'a' : ' ',
-      (modifiers & MOD_MASK_SHIFT) ? 's' : ' ',
+      (modifiers & MOD_MASK_CTRL) ? 'C' : ' ',
+      (modifiers & MOD_MASK_GUI) ? 'G' : ' ',
+      (modifiers & MOD_MASK_ALT) ? 'A' : ' ',
+      (modifiers & MOD_MASK_SHIFT) ? 'S' : ' ',
       '\0'
     };
     oled_write_ln(modifier_str, false);
+    char oneshot_modifier_str[5] = {
+      (oneshot_modifiers & MOD_MASK_CTRL) ? 'c' : ' ',
+      (oneshot_modifiers & MOD_MASK_GUI) ? 'g' : ' ',
+      (oneshot_modifiers & MOD_MASK_ALT) ? 'a' : ' ',
+      (oneshot_modifiers & MOD_MASK_SHIFT) ? 's' : ' ',
+      '\0'
+    };
+    oled_write_ln(oneshot_modifier_str, false);
     oled_write_ln_P(PSTR("     "), false);
   }
 }
