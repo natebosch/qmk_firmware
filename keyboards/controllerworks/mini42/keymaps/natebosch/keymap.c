@@ -138,10 +138,8 @@ enum custom_keycodes {
   K_JIGGL,
 };
 
-bool is_gui_tab_active = false;
 bool is_mouse_jiggle_active = false;
 bool is_caps_word_active = false;
-uint16_t gui_tab_timer = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
