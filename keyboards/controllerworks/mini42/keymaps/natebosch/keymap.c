@@ -141,7 +141,9 @@ enum custom_keycodes {
 bool is_mouse_jiggle_active = false;
 bool is_caps_word_active = false;
 bool is_holding_left_layer = false;
+bool is_lifting_left_layer = false;
 bool is_holding_right_layer = false;
+bool is_lifting_right_layer = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -212,21 +214,33 @@ bool process_combo_key_release(uint16_t combo_index, combo_t *combo,
       if (is_holding_left_layer){
         is_holding_left_layer = false;
         layer_off(l_ls1);
+      } else {
+        is_lifting_left_layer = true;
       }
-      return true;
+      return false;
     }
-    is_holding_left_layer = true;
-    layer_move(l_ls1);
+    if (is_lifting_left_layer) {
+      is_lifting_left_layer = false;
+    } else {
+      is_holding_left_layer = true;
+      layer_move(l_ls1);
+    }
   } else {
     if (key_index == 1) {
       if (is_holding_right_layer){
         is_holding_right_layer = false;
         layer_off(l_rs1);
+      } else {
+        is_lifting_right_layer = true;
       }
-      return true;
+      return false;
     }
-    is_holding_right_layer = true;
-    layer_move(l_rs1);
+    if (is_lifting_right_layer) {
+      is_lifting_right_layer = false;
+    } else {
+      is_holding_right_layer = true;
+      layer_move(l_rs1);
+    }
   }
   return false;
 }
