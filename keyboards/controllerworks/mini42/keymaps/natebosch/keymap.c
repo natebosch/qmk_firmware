@@ -182,21 +182,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         is_mouse_jiggle_active = !is_mouse_jiggle_active;
       }
-      break;
-    default:
-      if (is_gui_tab_active && record->event.pressed) {
-        is_gui_tab_active = false;
-        unregister_code(KC_LGUI);
-      }
   }
   return true;
 }
 
 void matrix_scan_user(void) {
-  if (is_gui_tab_active && timer_elapsed(gui_tab_timer) > 1000) {
-    unregister_code(KC_LGUI);
-    is_gui_tab_active = false;
-  }
   if (is_mouse_jiggle_active) {
     tap_code(KC_MS_UP);
     tap_code(KC_MS_DOWN);
@@ -436,7 +426,6 @@ void render_layer_status(void) {
     }
     char feature_str[5] = {
       (is_caps_word_active) ? 'W' : ' ',
-      (is_gui_tab_active) ? 'A' : ' ',
       (is_mouse_jiggle_active) ? 'M' : ' ',
       '\0'
     };
