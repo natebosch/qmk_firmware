@@ -201,11 +201,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // qwerty layout
   [l_qwt] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-        KC_TAB,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                            KC_Y,     KC_U,     KC_I,     KC_O,    KC_P,   KC_BSPC,
+       XXXXXXX,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                            KC_Y,     KC_U,     KC_I,     KC_O,    KC_P,   XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-      ESC_LCTL,    CTL_A,    GUI_S,    ALT_D,    SFT_F,     KC_G,                            KC_H,    SFT_J,    ALT_K,    GUI_L, CTL_SCLN,  KC_QUOT,
+       XXXXXXX,    CTL_A,    GUI_S,    ALT_D,    SFT_F,     KC_G,                            KC_H,    SFT_J,    ALT_K,    GUI_L, CTL_SCLN,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       KC_LSFT,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                            KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,RSFT_T(KC_ENT),
+       XXXXXXX,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                            KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
                                                 KC_TAB,   KC_DEL,  spc_ls1,     ent_rs1,  KC_BSPC,   KC_TAB
                                           //`-----------------------------'  `-----------------------------'
@@ -243,7 +243,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  SFT_ALT,  XXXXXXX,                         KC_TILD,  KC_HASH,  KC_ASTR,  KC_PERC,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  KC_LCTL,TT(l_sym),  KC_LGUI,  KC_LALT,  KC_LSFT,                         KC_CIRC,    KC_AT,  KC_EXLM,  KC_AMPR,  KC_DLR,  XXXXXXX,
+       XXXXXXX,  KC_LCTL,TT(l_sym),  KC_LGUI,  KC_LALT,  KC_LSFT,                         KC_CIRC,    KC_AT,  KC_EXLM,  KC_AMPR,   KC_DLR,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                         KC_PLUS,  KC_MINS,   KC_EQL,  KC_UNDS,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
