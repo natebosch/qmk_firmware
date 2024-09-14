@@ -140,6 +140,8 @@ enum custom_keycodes {
 
 bool is_mouse_jiggle_active = false;
 bool is_caps_word_active = false;
+bool is_holding_left_layer = false;
+bool is_holding_right_layer = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -199,6 +201,34 @@ void matrix_scan_user(void) {
 
 void caps_word_set_user(bool active) {
   is_caps_word_active = active;
+}
+
+bool process_combo_key_release(uint16_t combo_index, combo_t *combo,
+    uint8_t key_index, uint16_t keycode) {
+  // non layer switch combos use default behavior.
+  if (combo_index > L_CTR) return false;
+  if (combo_index <= L_FUN) {
+    if (key_index == 1) {
+      if (is_holding_left_layer){
+        is_holding_left_layer = false;
+        layer_off(l_ls1);
+      }
+      return true;
+    }
+    is_holding_left_layer = true;
+    layer_move(l_ls1);
+  } else {
+    if (key_index == 1) {
+      if (is_holding_right_layer){
+        is_holding_right_layer = false;
+        layer_off(l_rs1);
+      }
+      return true;
+    }
+    is_holding_right_layer = true;
+    layer_move(l_rs1);
+  }
+  return false;
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
