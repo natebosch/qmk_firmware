@@ -354,9 +354,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Vim macros
   [l_vim] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------.                      ,-----------------------------------------------------------.
-       XXXXXXX,  A_VIMEX,  A_VIMWQ,  A_VIMPD,  A_VIMND,  A_VIMTE,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  A_VIMEX,  A_VIMWQ,  A_VIMPT,  A_VIMNT,  A_VIMTE,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
-       XXXXXXX,  A_VIMNM,  A_VIMWR,  A_VIMPT,  A_VIMNT,  A_VIMGD,                         XXXXXXX,TT(l_vim),  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       XXXXXXX,  A_VIMNM,  A_VIMWR,  A_VIMPD,  A_VIMND,  A_VIMGD,                         XXXXXXX,TT(l_vim),  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+---------|
        XXXXXXX,  XXXXXXX,  XXXXXXX,  A_VIMCW,  XXXXXXX,  A_VIMWD,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------|  |---------+---------+---------+---------+---------+---------+---------|
@@ -558,9 +558,9 @@ const uint8_t PROGMEM rgb_layers[][MATRIX_ROWS][MATRIX_COLS * 3] = {
   // Vim macros
   [l_vim] = {
     {0x00, 0x00, 0x00,  0xFF, 0x19, 0x63,  0xFF, 0x69, 0x13,
-      0x99, 0xCC, 0xFF,  0x99, 0xCC, 0xFF,  0x7F, 0x00, 0xFF},
+      0x99, 0x33, 0xFF,  0x99, 0x33, 0xFF,  0x7F, 0x00, 0xFF},
     {0x00, 0x00, 0x00,  0x00, 0x80, 0xFF,  0x00, 0xFF, 0x00,
-      0x99, 0x33, 0xFF,  0x99, 0x33, 0xFF,  0x00, 0xCC, 0x66},
+      0x99, 0xCC, 0xFF,  0x99, 0xCC, 0xFF,  0x00, 0xCC, 0x66},
     {0x00, 0x00, 0x00,  0x00, 0x00, 0x00,  0x00, 0x00, 0x00,
       0xFF, 0x44, 0x44,  0x00, 0x00, 0x00,  0x00, 0xCC, 0x66},
     {0xFF, 0x00, 0x00,  0x00, 0x00, 0x00,  0x00, 0x00, 0x00,
